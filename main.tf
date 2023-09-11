@@ -67,7 +67,7 @@ module "blog_alb" {
       target_type      = "instance"
       targets = {
         my_target = {
-          target_id = autoscaling.image_id
+          target_id = module.autoscaling.image_id
           port = 80
         }
       }

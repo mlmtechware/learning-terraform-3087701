@@ -52,7 +52,7 @@ module "alb" {
 
   vpc_id             = module.blog_vpc.vpc_id
   subnets            = module.blog_vpc.public_subnets
-  security_groups    = module.blog_sg.security_group_id
+  security_groups    = [module.blog_sg.security_group_id]
 
   access_logs = {
     bucket = "my-alb-logs"
@@ -68,10 +68,6 @@ module "alb" {
         my_target = {
           target_id = aws_instance.blog.id
           port = 80
-        }
-        my_other_target = {
-          target_id = "i-a1b2c3d4e5f6g7h8i"
-          port = 8080
         }
       }
     }
